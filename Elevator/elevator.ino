@@ -35,7 +35,9 @@ int elevatorPosition = 1; // Starts on first floor
 void addToQueue(int floorNumber) {
 // Looks for the last 0 in the queue and replaces it with floorNumber
   for (int i = 0; i < queueSize; i++) {
-    if (elevatorQueue[i] == 0) {
+    if (elevatorQueue[i] == floorNumber) { // Breaks if floorNumber is already in the queue
+      break;
+    } else if (elevatorQueue[i] == 0) { // Looks for the first 0 in the queue
       elevatorQueue[i] = floorNumber;
       digitalWrite(buttonLEDArray[floorNumber - 1], HIGH); // Turn on LED indicating button call
       break;
